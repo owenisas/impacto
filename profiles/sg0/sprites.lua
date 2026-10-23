@@ -41,6 +41,16 @@ root.SpriteSheets = {
         Path = { Mount = "system", Id = 16 },
         DesignWidth = 3072,
         DesignHeight = 1728
+    },
+    ["SaveMenu"] = {
+        Path = { Mount = "system", Id = 21 },
+        DesignWidth = 3072,
+        DesignHeight = 2048
+    },
+    ["SysSaveMenu"] = {
+        Path = { Mount = "system", Id = 22 },
+        DesignWidth = 3072,
+        DesignHeight = 1848
     }
 };
 

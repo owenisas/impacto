@@ -381,8 +381,16 @@ VmInstruction(InstSaveMenu) {
   switch (type) {
     case 0: {  // SaveMenuInit
       PopUint8(arg1);
-      UI::SaveMenuPtr->ActiveMenuType =
-          magic_enum::enum_cast<UI::SaveMenuPageType>(arg1);
+      if (Profile::Vm::GameInstructionSet == InstructionSet::SG0) {
+        // STEINS;GATE 0 numbers the pages load 0, save 1, quick load 2.
+        constexpr UI::SaveMenuPageType sg0Pages[] = {
+            UI::SaveMenuPageType::Load, UI::SaveMenuPageType::Save,
+            UI::SaveMenuPageType::QuickLoad};
+        if (arg1 < 3) UI::SaveMenuPtr->ActiveMenuType = sg0Pages[arg1];
+      } else {
+        UI::SaveMenuPtr->ActiveMenuType =
+            magic_enum::enum_cast<UI::SaveMenuPageType>(arg1);
+      }
       ScrWork[SW_SAVEFILESTATUS] = 0;
 
       // Block input during animation

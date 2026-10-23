@@ -33,6 +33,7 @@ enum class SaveMenuType : int {
   MO8,
   CHLCC,
   CCLCC,
+  SG0,
 };
 enum class SysMesBoxType : int {
   None,

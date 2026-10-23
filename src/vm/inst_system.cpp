@@ -1215,6 +1215,10 @@ VmInstruction(InstAutoSave) {
       SaveSystem::FlushWorkingSaveEntry(SaveSystem::SaveType::Quick,
                                         *quicksaveEntries, saveType);
       SaveSystem::SaveThumbnailData();
+      // SG0's scripts never write the save file after a quick save.
+      if (Profile::Vm::GameInstructionSet == InstructionSet::SG0) {
+        SaveSystem::WriteSaveFile();
+      }
     }
   };
 

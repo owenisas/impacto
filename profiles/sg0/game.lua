@@ -44,6 +44,9 @@ include(root.BasePaths.RootProfilesDir .. '/common/scriptinput.lua');
 -- Phone button: L2 / R2 (Z / C on the keyboard).
 root.Input.PADcustomA[23] = root.PADinput.PAD1L2 | root.PADinput.PAD1R2;
 root.Input.PADcustomB[23] = root.PADinput.PAD1L2 | root.PADinput.PAD1R2;
+-- F5 loads and F7 quick loads, as on the game's help page.
+root.Input.KBcustom[55] = {KeyboardScanCode._F7};
+root.Input.KBcustom[58] = {KeyboardScanCode._F5};
 include(root.BasePaths.RootProfilesDir .. '/common/scriptvars.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/scriptvars.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/savedata.lua');
@@ -60,6 +63,7 @@ include(root.BasePaths.RootProfilesDir .. '/sg0/hud/saveicon.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/loadingdisplay.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/datedisplay.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/titlemenu.lua');
+include(root.BasePaths.RootProfilesDir .. '/sg0/hud/savemenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/phone.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/backlogmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/sysmesboxdisplay.lua');
