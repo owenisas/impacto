@@ -26,6 +26,12 @@ root.GameDefinitions = {
       English = root.BasePaths.RootPatchesDir .. "/english/profiles/cclcc-switch/patch.lua",
     }
   },
+  sg0 = {
+    Name = "STEINS;GATE 0 (Steam)",
+    LauncherOrderId = 10,
+    LauncherTheme = 0x2E6B5E,
+    GameProfile = root.BasePaths.RootProfilesDir .. "/sg0/game.lua",
+  },
   mo6tw = {
     Hidden = true,
     Name = "Memories Off 6 ~T-Wave~",

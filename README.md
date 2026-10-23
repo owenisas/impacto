@@ -2,6 +2,12 @@
 
 **impacto** is an open-source **reimplementation** of the **"MAGES." visual novel engine** in C++ and OpenGL. Using the original data files, impacto can run any supported game on any supported platform.
 
+## STEINS;GATE 0 (Steam)
+
+This fork adds support for the Steam release of STEINS;GATE 0. It is not part of the upstream project, so please report problems here rather than to [CommitteeOfZero/impacto](https://github.com/CommitteeOfZero/impacto).
+
+It contains no game files. You need your own copy of the game: copy or link the `.mpk` archives and the `movie` folder from the game's `USRDIR` into `gamedata/sg0/`, then pick STEINS;GATE 0 in the launcher.
+
 ## Status
 
 **impacto is in active development**. At current stage it should be possible to reach all endings in at least one supported game - "Memories Off 6 \~T-Wave\~." However, some functionality and architectural design are still missing and **no games are fully complete yet**. Refer to [#1](https://github.com/CommitteeOfZero/impacto/issues/1) for supported games and remaining work.
