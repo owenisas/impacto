@@ -65,6 +65,8 @@ include(root.BasePaths.RootProfilesDir .. '/sg0/hud/datedisplay.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/titlemenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/savemenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/phone.lua');
+include(root.BasePaths.RootProfilesDir .. '/sg0/hud/systemmenu.lua');
+include(root.BasePaths.RootProfilesDir .. '/sg0/hud/helpmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/backlogmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/sysmesboxdisplay.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/selectiondisplay.lua');

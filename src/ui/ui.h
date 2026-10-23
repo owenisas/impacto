@@ -26,6 +26,7 @@ enum class SystemMenuType : int {
   CHLCC,
   MO8,
   CCLCC,
+  SG0,
 };
 enum class SaveMenuType : int {
   None,
@@ -105,6 +106,7 @@ enum class TrophyMenuType : int {
 enum class HelpMenuType : int {
   None,
   CCLCC,
+  SG0,
 };
 enum class GameSpecificType : int {
   None,

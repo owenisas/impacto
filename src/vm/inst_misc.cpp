@@ -116,6 +116,9 @@ VmInstruction(InstSystemMenu) {
           BlockThread;
         }
       }
+      if (Profile::Vm::GameInstructionSet == InstructionSet::SG0) {
+        UI::SystemMenuPtr->Init();
+      }
       if (Profile::Vm::GameInstructionSet == InstructionSet::LCCSwitch) {
         ScrWork[SW_SYSMENUCTMAX] = 32;
       }

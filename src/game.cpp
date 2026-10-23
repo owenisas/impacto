@@ -37,6 +37,7 @@
 #include "hud/achievementnotification.h"
 #include "games/cclcc/systemmenu.h"
 #include "games/sg0/phone.h"
+#include "games/sg0/systemmenu.h"
 #include "games/sg0/cutin.h"
 #include "effects/wave.h"
 #include "effects/blur.h"
@@ -674,6 +675,13 @@ void Render() {
               GetFlag(SF_SYSTEMMENUCAPTURE)) {
             Renderer->CaptureScreencap(
                 static_cast<UI::CCLCC::SystemMenu*>(UI::SystemMenuPtr)
+                    ->ScreenCap);
+            SetFlag(SF_SYSTEMMENUCAPTURE, false);
+          } else if (Profile::Vm::GameInstructionSet ==
+                         Vm::InstructionSet::SG0 &&
+                     GetFlag(SF_SYSTEMMENUCAPTURE) && UI::SystemMenuPtr) {
+            Renderer->CaptureScreencap(
+                static_cast<UI::SG0::SystemMenu*>(UI::SystemMenuPtr)
                     ->ScreenCap);
             SetFlag(SF_SYSTEMMENUCAPTURE, false);
           }
