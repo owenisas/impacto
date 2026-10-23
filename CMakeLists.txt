@@ -218,6 +218,7 @@ set(Impacto_Src
     src/games/sg0/titlemenu.cpp
     src/games/sg0/sysmesbox.cpp
     src/games/sg0/backlogmenu.cpp
+    src/games/sg0/cutin.cpp
     src/games/cc/sysmesbox.cpp
 
     src/games/cclcc/commonmenu.cpp
@@ -598,6 +599,7 @@ set(Impacto_Header
     src/games/sg0/titlemenu.h
     src/games/sg0/sysmesbox.h
     src/games/sg0/backlogmenu.h
+    src/games/sg0/cutin.h
     src/games/cc/sysmesbox.h
 
     src/games/cclcc/commonmenu.h

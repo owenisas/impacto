@@ -19,6 +19,7 @@ sv.SW_MASK1POSY = 4404;
 sv.SW_MASK1SIZEX = 4405;
 sv.SW_MASK1SIZEY = 4406;
 sv.SW_MESMODE0 = 4363;
+sv.SW_CUTIN1 = 5800;
 
 -- SG0 uses 4422 for an effect state. 4430 is never written, so the window
 -- type reads 0.

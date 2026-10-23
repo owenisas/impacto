@@ -36,6 +36,7 @@
 #include "hud/tipsnotification.h"
 #include "hud/achievementnotification.h"
 #include "games/cclcc/systemmenu.h"
+#include "games/sg0/cutin.h"
 #include "effects/wave.h"
 #include "effects/blur.h"
 #include "effects/mosaic.h"
@@ -475,6 +476,10 @@ static void RenderMain() {
 
     if (Background2D::LastRenderedBackground != nullptr) {
       Background2D::LastRenderedBackground->RenderBgEff(layer);
+    }
+
+    if (Profile::Vm::GameInstructionSet == Vm::InstructionSet::SG0) {
+      SG0::RenderCutins(static_cast<int>(layer));
     }
 
     if ((+Profile::Game::GameFeatures & +GameFeature::Renderer2D) &&

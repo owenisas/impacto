@@ -23,6 +23,7 @@
 #include "../games/cc/titlemenu.h"
 #include "../games/cclcc/systemmenu.h"
 #include "../games/cclcc/helpmenu.h"
+#include "../games/sg0/cutin.h"
 #include "../video/videosystem.h"
 #include "../io/vfs.h"
 namespace Impacto {
@@ -673,6 +674,11 @@ VmInstruction(InstSetCutin) {
   PopExpression(arg1);
   PopExpression(arg2);
   PopExpression(arg3);
+  if (Profile::Vm::GameInstructionSet == InstructionSet::SG0 &&
+      type < SG0::Cutins.size()) {
+    SG0::Cutins[type] = {.Enabled = arg1 != 0, .BufferMask = arg2};
+    return;
+  }
   ImpLogSlow(LogLevel::Warning, LogChannel::VMStub,
              "STUB instruction SetCutin(type: {:d}, arg1: {:d}, arg2: {:d}, "
              "arg3: {:d})\n",
