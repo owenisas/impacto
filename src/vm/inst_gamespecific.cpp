@@ -10,6 +10,8 @@
 #include "../profile/vm.h"
 
 #include "../ui/gamespecific.h"
+#include "../games/sg0/phone.h"
+#include "../games/sg0/rine.h"
 
 #include "../games/cclcc/delusiontrigger.h"
 #include "../games/chlcc/delusiontrigger.h"
@@ -829,47 +831,112 @@ VmInstruction(InstPressStartSG0) {
 VmInstruction(InstPhoneSG0) {
   StartInstruction;
   PopUint8(type);
+  using UI::SG0::RineState;
   switch (type) {
-    case 0x00:
-      for (int i = 0; i < 7; i++) {
+    case 0x00: {  // PhoneInit: the seven _phone tables
+      uint16_t labels[7];
+      for (uint16_t& label : labels) {
         PopUint16(labelNum);
-        (void)labelNum;
+        label = labelNum;
+      }
+      if (UI::SG0::PhonePtr) {
+        UI::SG0::PhonePtr->LoadTables(thread->ScriptBufferId, labels);
+      }
+      RineState.LoadParticipants(thread->ScriptBufferId, labels[4]);
+    } break;
+    case 0x01:  // SessionBegin: the player opened the phone
+      if (UI::SG0::PhonePtr) UI::SG0::PhonePtr->BeginSession();
+      break;
+    case 0x02:  // SessionTick: the phone UI sets flag 2604 when done
+      break;
+    case 0x03:  // SessionEnd
+      if (UI::SG0::PhonePtr) UI::SG0::PhonePtr->EndSession();
+      break;
+    case 0x04:  // IdleTick
+      break;
+    case 0x0A: {  // SetReplyMenu: the block is read when the player replies
+      PopUint16(labelNum);
+      RineState.SetReplyMenu(thread->ScriptBufferId, labelNum);
+    } break;
+    case 0x0B:  // EndBlock: ends a reply branch, or cancels the pending menu
+      if (RineState.IsBranchThread(thread)) {
+        RineState.EndBranch(thread);
+        BlockThread;
+      } else {
+        RineState.CancelReplyMenu();
       }
       break;
-    case 0x0A:
-    case 0x32: {
+    case 0x0C: {  // MenuHeader (only reached if the VM runs the menu block)
+      PopExpression(sender);
+      PopExpression(kind);
+      (void)sender;
+      (void)kind;
+    } break;
+    case 0x0D: {  // MenuOption
+      PopExpression(value);
       PopUint16(labelNum);
+      (void)value;
       (void)labelNum;
     } break;
-    case 0x0C: {
+    case 0x0E:  // MenuEnd
+      break;
+    case 0x0F: {  // QueueMessage: a branch message, after a typing pause
+      PopExpression(sender);
+      PopExpression(kind);
+      PopExpression(value);
+      if (RineState.IsBranchThread(thread) && !RineState.TypingDone()) {
+        ResetInstruction;
+        BlockThread;
+        break;
+      }
+      RineState.AddMessage(sender, kind, value);
+    } break;
+    case 0x28:  // ClearAllRine
+      RineState.ClearAll();
+      break;
+    case 0x29:  // ThreadRefresh: the phone UI lays the thread out itself
+      break;
+    case 0x2A: {  // NewThread(owner)
+      PopExpression(owner);
+      RineState.NewThread(owner);
+    } break;
+    case 0x2B:    // AddMember
+    case 0x2C: {  // AddMemberUnread
+      PopExpression(participant);
+      RineState.AddMember(participant);
+    } break;
+    case 0x2D: {  // unused
+      PopExpression(arg1);
+      (void)arg1;
+    } break;
+    case 0x2E: {  // AddMessage(sender, kind, value)
+      PopExpression(sender);
+      PopExpression(kind);
+      PopExpression(value);
+      RineState.AddMessage(sender, kind, value);
+    } break;
+    case 0x2F:  // ClearInput
+      RineState.ClearInput();
+      break;
+    case 0x30: {  // SetInputText(text)
+      PopExpression(text);
+      RineState.SetInput(text);
+    } break;
+    case 0x31: {  // unused
       PopExpression(arg1);
       PopExpression(arg2);
+      (void)arg1;
+      (void)arg2;
     } break;
-    case 0x0D: {
-      PopExpression(arg1);
+    case 0x32: {  // SelectTextList(_phone label)
       PopUint16(labelNum);
-      (void)labelNum;
+      RineState.SelectTextList(labelNum);
     } break;
-    case 0x0F:
-    case 0x2E: {
-      PopExpression(arg1);
-      PopExpression(arg2);
-      PopExpression(arg3);
-    } break;
-    case 0x2A:
-    case 0x2B:
-    case 0x2C:
-    case 0x2D:
-    case 0x30: {
-      PopExpression(arg1);
-    } break;
-    case 0x31: {
-      PopExpression(arg1);
-      PopExpression(arg2);
-    } break;
+    default:
+      ImpLog(LogLevel::Error, LogChannel::VMStub,
+             "Unknown PhoneSG0 type {:d}, operand length unknown\n", type);
+      break;
   }
-  ImpLogSlow(LogLevel::Warning, LogChannel::VMStub,
-             "STUB instruction PhoneSG0(type: {:d})\n", type);
 }
 
 VmInstruction(InstMail) {

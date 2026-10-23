@@ -147,6 +147,7 @@ set(Impacto_Src
     src/profile/games/cc/titlemenu.cpp
     src/profile/games/sg0/titlemenu.cpp
     src/profile/games/sg0/sysmesbox.cpp
+    src/profile/games/sg0/phone.cpp
     src/profile/games/sg0/backlogmenu.cpp
     src/profile/games/cc/sysmesbox.cpp
 
@@ -217,6 +218,8 @@ set(Impacto_Src
     src/games/cc/titlemenu.cpp
     src/games/sg0/titlemenu.cpp
     src/games/sg0/sysmesbox.cpp
+    src/games/sg0/phone.cpp
+    src/games/sg0/rine.cpp
     src/games/sg0/backlogmenu.cpp
     src/games/sg0/cutin.cpp
     src/games/cc/sysmesbox.cpp
@@ -531,6 +534,7 @@ set(Impacto_Header
     src/profile/games/cc/titlemenu.h
     src/profile/games/sg0/titlemenu.h
     src/profile/games/sg0/sysmesbox.h
+    src/profile/games/sg0/phone.h
     src/profile/games/sg0/backlogmenu.h
     src/profile/games/cc/sysmesbox.h
 
@@ -598,8 +602,11 @@ set(Impacto_Header
     src/games/cc/titlemenu.h
     src/games/sg0/titlemenu.h
     src/games/sg0/sysmesbox.h
+    src/games/sg0/phone.h
+    src/games/sg0/rine.h
     src/games/sg0/backlogmenu.h
     src/games/sg0/cutin.h
+    src/games/sg0/fullwidth.h
     src/games/cc/sysmesbox.h
 
     src/games/cclcc/commonmenu.h

@@ -36,6 +36,7 @@
 #include "hud/tipsnotification.h"
 #include "hud/achievementnotification.h"
 #include "games/cclcc/systemmenu.h"
+#include "games/sg0/phone.h"
 #include "games/sg0/cutin.h"
 #include "effects/wave.h"
 #include "effects/blur.h"
@@ -345,6 +346,7 @@ void UpdateSystem(float dt) {
     Vm::Interface::UpdatePADInput();
     Vm::Interface::UpdatePADHoldInput(updateInterval);
     Vm::Interface::UpdateKBHoldInput(updateInterval);
+    if (UI::SG0::PhonePtr) UI::SG0::PhonePtr->TakeInput(updateInterval);
     UpdateGameState(updateInterval);
 
     for (DrawComponentType value :

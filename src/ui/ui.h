@@ -112,6 +112,7 @@ enum class GameSpecificType : int {
   CCLCC,
   RNE,
   Dash,
+  SG0,
 };
 int constexpr MaxExtraMenus = 10;
 
