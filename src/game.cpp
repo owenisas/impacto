@@ -764,6 +764,13 @@ void Render() {
         menu->Render();
       }
     }
+    // SG0's movie library plays above every layer.
+    if (Profile::Vm::GameInstructionSet == Vm::InstructionSet::SG0 &&
+        +Profile::Game::GameFeatures & +GameFeature::Video &&
+        ScrWork[SW_MOVIEPRI] > static_cast<int>(Profile::Game::LayerCount) &&
+        ScrWork[SW_MOVIEALPHA] > 0) {
+      Video::VideoRender(ScrWork[SW_MOVIEALPHA] / 256.0f);
+    }
     if (+Profile::Game::GameFeatures & +GameFeature::Achievements) {
       AchievementNotification::Render();
     }

@@ -73,3 +73,4 @@ include(root.BasePaths.RootProfilesDir .. '/sg0/hud/selectiondisplay.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/tipsmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/optionsmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/tipsnotification.lua');
+include(root.BasePaths.RootProfilesDir .. '/sg0/hud/extramenus.lua');

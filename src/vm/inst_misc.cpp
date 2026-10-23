@@ -23,6 +23,7 @@
 #include "../games/cc/titlemenu.h"
 #include "../games/cclcc/systemmenu.h"
 #include "../games/cclcc/helpmenu.h"
+#include "../games/sg0/librarymenu.h"
 #include "../games/sg0/cutin.h"
 #include "../video/videosystem.h"
 #include "../io/vfs.h"
@@ -333,6 +334,11 @@ VmInstruction(InstAlbum) {
                  "STUB instruction Album(type: EXmenuInit)\n");
       break;
     case 1:  // EXmenuMain
+      if (auto* library =
+              dynamic_cast<UI::SG0::LibraryMenu*>(UI::LibraryMenuPtr)) {
+        library->MainTick();
+        break;
+      }
       ImpLogSlow(LogLevel::Warning, LogChannel::VMStub,
                  "STUB instruction Album(type: EXmenuMain)\n");
       break;

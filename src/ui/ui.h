@@ -77,10 +77,12 @@ enum class ClearListMenuType : int {
   MO6TW,
   CHLCC,
   CCLCC,
+  SG0,
 };
 enum class LibraryMenuType : int {
   None,
   CCLCC,
+  SG0,
 };
 enum class AlbumMenuType : int {
   None,
