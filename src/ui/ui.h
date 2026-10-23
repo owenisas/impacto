@@ -63,12 +63,14 @@ enum class OptionsMenuType : int {
   MO8,
   CHLCC,
   CCLCC,
+  SG0,
 };
 enum class TipsMenuType : int {
   None,
   MO6TW,
   CHLCC,
   CCLCC,
+  SG0,
 };
 enum class ClearListMenuType : int {
   None,

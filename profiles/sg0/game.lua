@@ -70,4 +70,6 @@ include(root.BasePaths.RootProfilesDir .. '/sg0/hud/helpmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/backlogmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/sysmesboxdisplay.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/selectiondisplay.lua');
+include(root.BasePaths.RootProfilesDir .. '/sg0/hud/tipsmenu.lua');
+include(root.BasePaths.RootProfilesDir .. '/sg0/hud/optionsmenu.lua');
 include(root.BasePaths.RootProfilesDir .. '/sg0/hud/tipsnotification.lua');
